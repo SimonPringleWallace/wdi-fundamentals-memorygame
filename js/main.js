@@ -3,7 +3,28 @@
 // var cardThree = "Queen";
 // var cardFour = "King";
 //arrays for nameing and gather the flipped cards
-var cards = ["King" , "Queen" , "King" , "Queen"];
+var cards = [
+{
+	rank: "queen",
+	suit: "hearts",
+	cardImage: "images/queen-of-hearts.png",
+},
+{   
+	rank: "queen",
+	suit: "diamonds",
+	cardImage: "images/queen-of-diamonds.png",
+},
+{
+	rank: "king",
+	suit: "hearts",
+	cardImage: "images/hing-of-hearts.png",
+},
+{
+	rank: "king",
+	suit:"hearts",
+	cardImage: "images/king-of-diamonds.png",
+}
+];
 var cardsInPlay = [];
 var checkForMatch = function() {
 	if (cardsInPlay.length < 2) {
@@ -18,8 +39,9 @@ var checkForMatch = function() {
 //decide whether to check for match and what to say about it
 
 var flipCard = function (cardId) {	
-console.log ("User flipped " + cards[cardId]);		
-cardsInPlay.push(cards[cardId]);
+console.log ("User flipped the " + cards[cardId].rank + " of " + cards[cardId].suit);	
+console.log (cards[cardId].cardImage);	
+cardsInPlay.push(cards[cardId].rank);
 checkForMatch();
 }
 
@@ -27,7 +49,7 @@ checkForMatch();
 // display user choice
 
 flipCard(0);
-flipCard(2);
+flipCard(1);
 
 
 
