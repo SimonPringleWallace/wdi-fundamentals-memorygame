@@ -17,7 +17,7 @@ var cards = [
 {
 	rank: "king",
 	suit: "hearts",
-	cardImage: "images/hing-of-hearts.png",
+	cardImage: "images/king-of-hearts.png",
 },
 {
 	rank: "king",
@@ -26,30 +26,43 @@ var cards = [
 }
 ];
 var cardsInPlay = [];
+
 var checkForMatch = function() {
 	if (cardsInPlay.length < 2) {
 		return;
 
 }	else if (cardsInPlay[0] === cardsInPlay[1]) {
-		console.log("You found a match!");
+		alert("You found a match!");
 }   else if (cardsInPlay[0] !== cardsInPlay[1]) {
-	    console.log("Sorry, try again");
+	    alert("Sorry, try again");
 }
 }
 //decide whether to check for match and what to say about it
 
-var flipCard = function (cardId) {	
+var flipCard = function () {	
+var cardId = this.getAttribute('data-id');
+this.setAttribute('src',cards[cardId].cardImage)
 console.log ("User flipped the " + cards[cardId].rank + " of " + cards[cardId].suit);	
 console.log (cards[cardId].cardImage);	
 cardsInPlay.push(cards[cardId].rank);
 checkForMatch();
 }
+// create the board
+var createBoard = function(){
+for (var i = 0; i < cards.length; i++) {
+cardElement = document.createElement('img');
+cardElement.setAttribute('src','images/back.png');
+cardElement.setAttribute('data-id', i);
+cardElement.addEventListener('click', flipCard);
+document.getElementById('game-board').appendChild(cardElement);
+}
+}
 
 
 // display user choice
 
-flipCard(0);
-flipCard(1);
+createBoard();
+
 
 
 
